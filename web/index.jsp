@@ -7,6 +7,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <% response.sendRedirect("SVArranque?accion=principal"); %>
+         <% response.sendRedirect("vista/index.jsp"); %>
     </body>
 </html>
