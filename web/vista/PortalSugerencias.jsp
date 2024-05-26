@@ -23,14 +23,7 @@
                     <select name="Documentos">
                         <option value="d" selected>DNI</option>
                         <option value="c">Carnet de Identidad</option>
-                        <input 
-                            type="text" 
-                            name="NroDoc" 
-                            placeholder="Nro Documento *" 
-                            required title="Nro Documento *" 
-                            pattern="{0-9}+" 
-                            maxlength="8" 
-                            />
+                       
                         <input 
                             type="text" 
                             name="NroDoc" 
