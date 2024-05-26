@@ -1,0 +1,73 @@
+
+#productos-Android, #productos-IOS{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.tarjeta-productoAndroid, .tarjeta-productoIOS{
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    width: 270px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.tarjeta-productoAndroid img, .tarjeta-productoIOS img{
+    width: 250px;
+    height: 270px;
+    aspect-ratio: 1.5;
+}
+
+.tarjeta-productoAndroid h3, .tarjeta-productoIOS h3{
+    margin: 15px 0px;
+    color: black;
+}
+
+.tarjeta-productoAndroid h4, .tarjeta-productoIOS h4{
+    color: #2E86C1;
+    font-size: 18px;
+    margin: 15px 0px
+}
+
+.tarjeta-productoAndroid button, .tarjeta-productoIOS button{
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.tarjeta-productoAndroid:hover, .tarjeta-productoIOS:hover{
+    translate: 0px -10px;
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-productoAndroid button:hover, .tarjeta-productoIOS button:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+}
+
+.tarjeta-productoAndroid button:disabled, .tarjeta-productoIOS button:disabled{
+    pointer-events: none;
+}
+
+@media (max-width:600px) {
+    #productos-Android, #productos-IOS{
+        gap: 10px;
+    }
+
+    .tarjeta-productoAndroid, .tarjeta-productoIOS{
+        max-width: 200px;
+    }
+
+    .tarjeta-productoAndroid img, .tarjeta-productoIOS img{
+        width: 180px;
+        height: 210px;
+    }
+}

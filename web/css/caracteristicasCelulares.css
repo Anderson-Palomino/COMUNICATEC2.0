@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    background: #F2F3F4;
+    margin: 0;
+}
+
+.containerCarac {
+    width: 750px;
+    margin: auto;
+    margin-top: 85px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilos para las especificaciones */
+.especificaciones {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    text-align: left;
+    padding: 20px; /* Espacio entre la imagen y las especificaciones */
+}
+
+.miniMenu{
+    color: #515A5A;
+}
+.miniMenu a{
+    text-decoration: underline;
+    color: #515A5A;
+}
+
+#container-producto{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+/* Animación de desplazamiento hacia la derecha */
+@keyframes slideRight {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(70px); /* Ajusta el valor según tu preferencia */
+        opacity: 1;
+    }
+}
+
+.tarjeta-producto{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 40px;
+}
+
+/* Aplicar la animación a la imagen */
+.tarjeta-producto img{
+    width: 250px;
+    height: 270px;
+    aspect-ratio: 1.5;
+    animation: slideRight 1s ease-in-out; /* Duración y tipo de animación */
+}
+
+.tarjeta-producto .info{
+    width: 250px;
+}
+
+.tarjeta-producto h3{
+    padding: 10px 0px;
+}
+
+.tarjeta-producto p{
+    padding: 10px 0px;
+}
+
+.tarjeta-producto .btnCantidad{
+    padding: 5px 12px;
+    border-radius: 10px;
+    border: unset;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-producto .btnCantidad:hover{
+    color: white;
+    background-color: black;
+}
+
+.tarjeta-producto button{
+    padding: 10px 20px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    font-size: 18px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.tarjeta-producto button:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+}
+
+.tarjeta-producto button:disabled{
+    pointer-events: none;
+}
+
+.especificaciones ul {
+    list-style-type: none;
+    margin: 20px 0px;
+}
+
+.especificaciones ul li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* Estilos para el video */
+.especificaciones iframe {
+    margin: 20px auto;
+    width: 100% ;
+    min-height: 360px;
+}
+
+@media (max-width:760px){
+    .containerCarac {
+        max-width: 100%;
+    }
+    
+}
+
+
+

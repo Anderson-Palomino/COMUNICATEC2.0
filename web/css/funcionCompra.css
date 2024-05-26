@@ -1,0 +1,173 @@
+body {
+    background: #F2F3F4;
+}
+
+.container-compra{
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.container-compra form{
+    display: flex;
+    justify-content: center;
+    gap: 50px;  
+}
+
+.container-compra h1{
+    margin-top: 10px;
+    padding: 20px 0px;
+    font-size: 24px;
+    opacity: 0.7;
+}
+.info-pago{
+    width: 800px;
+}
+
+/*TIPO ENTREGA*/
+
+
+
+.tipo-entrega div{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tipo-entrega section{
+    border: 1px solid gray; /* Color y grosor del borde */
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+
+.tipo-entrega label, .tipo-entrega input{
+    cursor: pointer;
+}
+
+/*TIPO PAGO*/
+
+
+
+.tipo-pago .tarjeta{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tipo-pago .tarjeta label{
+    border: 1px solid gray; /* Color y grosor del borde */
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.tarjeta label.clicked {
+    border: 2px solid #2E86C1;
+  }
+
+
+
+/*INFO DE LA TARJETA*/
+
+.tarjeta-info{
+    background-color: #F2F3F4;
+    margin-top: 80px;
+    padding: 20px;
+    height: 100%;
+    width: 500px;
+}
+
+
+.tarjeta-info input, .tarjeta-info select{
+    width: 100%;
+    margin: 10px 0px;
+    padding: 10px;
+}
+
+.tarjeta-info span{
+    font-size: 12px;
+}
+.tarjeta-info div{
+    display: flex;
+    justify-content: center;
+}
+
+.tarjeta-info button{
+    background-color: #85C1E9;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0px;
+    width: 200px;
+    border: 0;
+}
+
+.tarjeta-info button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+  }
+
+
+/*RESUMEN DEL PAGO*/
+.resumen-pago{
+    width: 350px;
+}
+.contenedor{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 10px;
+}
+
+.contenedor label, .contenedor input{
+    cursor: pointer;
+}
+
+.contenedor .btn-pagar{
+    margin: auto;
+}
+
+.carritoLogo{
+    display: block;
+    margin-right: 50px;
+    color: black;
+}
+
+.totales p{
+    padding: 10px 0px;
+}
+
+.tarjeta-producto{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+    border-top: 1px solid gray;
+    padding: 10px 0px;
+}
+
+.tarjeta-producto img{
+    width: 50px;
+    height: 50px;
+}
+
+.tarjeta-producto h3{
+    width: 150px;
+}
+
+.tarjeta-producto p{
+    width: 80px;
+}
+
+
+.btn-pagar{
+    padding: 10px;
+    width: 200px;
+}
