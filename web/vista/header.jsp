@@ -18,6 +18,8 @@
             </li>
             <li><a href="Contactanos.jsp">Contactanos</a></li>
             <li><a href="Nosotros.jsp">Nosotros</a></li>
+            <li><a href="Ingresar.jsp">Ingresar</a></li>
+            <li><a href="Registrarse.jsp">Registrarse</a></li>
         </ul>
     </nav> <!-- Fin de la barra de navegación --> 
 </header>
