@@ -16,9 +16,9 @@ public class ConectaDB {
         String username = "root";
         String password = "";
         String database = "paginawebcelulares";
-        String port = "3306";
+        String port = "3309";
         
-        String url = "jdbc:mysql://localhost:3306/paginawebcelulares?useTimeZone=true&serverTimezone=UTC&autoReconnect=true";
+        String url = "jdbc:mysql://localhost:3309/paginawebcelulares?useTimeZone=true&serverTimezone=UTC&autoReconnect=true";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

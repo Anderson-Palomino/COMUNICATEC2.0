@@ -4,6 +4,30 @@
         <servlet-name>SVPortalSugerencias</servlet-name>
         <servlet-class>controladores.SVPortalSugerencias</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVCelulares</servlet-name>
+        <servlet-class>controladores.SVCelulares</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SVIos</servlet-name>
+        <servlet-class>controladores.SVIos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SVAndroid</servlet-name>
+        <servlet-class>controladores.SVAndroid</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SVCelulares</servlet-name>
+        <url-pattern>/SVCelulares</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVIos</servlet-name>
+        <url-pattern>/SVIos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVAndroid</servlet-name>
+        <url-pattern>/SVAndroid</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
