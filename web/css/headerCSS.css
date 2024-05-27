@@ -13,7 +13,7 @@
     height: 80px;
     z-index: 3;
     position: fixed;
-    top:0; 
+    top:0;
 }
 
 
@@ -68,10 +68,12 @@
 
 .menu a {
     color: black;
-    display: block;
-    width: 110px;
+    display: inline-block; /* Cambiamos de bloque a en línea para ajustar el tamaño al contenido */
+    padding: 0 10px; /* Añadimos espacio alrededor del texto */
     text-align: center;
+    text-decoration: none; /* Eliminamos la decoración predeterminada */
 }
+
 
 .fa-solid{
     right: 20px;
@@ -202,13 +204,13 @@
         margin-right: 30px;
         cursor: pointer;
     }
-    
+
     .carrito{
         float: right;
         margin-right: 30px;
     }
 
-    #check:checked ~ nav .menu{ 
+    #check:checked ~ nav .menu{
         left: 0;
     }
 
@@ -231,4 +233,3 @@
         width: 100px;
     }
 }
-

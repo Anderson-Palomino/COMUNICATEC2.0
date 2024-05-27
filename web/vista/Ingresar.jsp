@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +18,9 @@
     <div class="containerLogin">
         <section class="form-login">
             <h5>Ingresar</h5>
+            <c:if test="${not empty error}">
+                <p style="color: red">${error}</p>
+            </c:if>
             <form action="${pageContext.request.contextPath}/IniciarSesionServlet" method="post">
                 <input class="controls" type="text" name="correo" id="correo" value="" placeholder="Correo">
                 <input class="controls" type="password" name="contrasena" id="contrasena" value="" placeholder="Contraseña">
@@ -28,3 +32,4 @@
 </body>
 <jsp:include page="footer.jsp" />
 </html>
+
