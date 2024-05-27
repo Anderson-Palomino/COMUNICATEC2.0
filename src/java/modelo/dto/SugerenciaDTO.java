@@ -3,56 +3,127 @@ package modelo.dto;
 import java.sql.Timestamp;
 
 public class SugerenciaDTO {
+
     private int id;
-    private String tipoDocumento;
-    private String nroDocumento;
-    private String primerNombre;
-    private String segundoNombre;
-    private String primerApellido;
-    private String segundoApellido;
+    private String tipo_documento;
+    private String nro_documento;
+    private String primer_nombre;
+    private String segundo_nombre;
+    private String primer_apellido;
+    private String segundo_apellido;
     private String celular;
     private String correo;
     private String observaciones;
     private byte[] imagen;
-    private String pedidoConsumidor;
+    private String pedido_consumidor;
     private Timestamp fecha;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public SugerenciaDTO() {
+    }
+    
+   
 
-    public String getTipoDocumento() { return tipoDocumento; }
-    public void setTipoDocumento(String tipoDocumento) { this.tipoDocumento = tipoDocumento; }
+    public int getId() {
+        return id;
+    }
 
-    public String getNroDocumento() { return nroDocumento; }
-    public void setNroDocumento(String nroDocumento) { this.nroDocumento = nroDocumento; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getPrimerNombre() { return primerNombre; }
-    public void setPrimerNombre(String primerNombre) { this.primerNombre = primerNombre; }
+    public String getTipo_documento() {
+        return tipo_documento;
+    }
 
-    public String getSegundoNombre() { return segundoNombre; }
-    public void setSegundoNombre(String segundoNombre) { this.segundoNombre = segundoNombre; }
+    public void setTipo_documento(String tipo_documento) {
+        this.tipo_documento = tipo_documento;
+    }
 
-    public String getPrimerApellido() { return primerApellido; }
-    public void setPrimerApellido(String primerApellido) { this.primerApellido = primerApellido; }
+    public String getNro_documento() {
+        return nro_documento;
+    }
 
-    public String getSegundoApellido() { return segundoApellido; }
-    public void setSegundoApellido(String segundoApellido) { this.segundoApellido = segundoApellido; }
+    public void setNro_documento(String nro_documento) {
+        this.nro_documento = nro_documento;
+    }
 
-    public String getCelular() { return celular; }
-    public void setCelular(String celular) { this.celular = celular; }
+    public String getPrimer_nombre() {
+        return primer_nombre;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setPrimer_nombre(String primer_nombre) {
+        this.primer_nombre = primer_nombre;
+    }
 
-    public String getObservaciones() { return observaciones; }
-    public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
+    public String getSegundo_nombre() {
+        return segundo_nombre;
+    }
 
-    public byte[] getImagen() { return imagen; }
-    public void setImagen(byte[] imagen) { this.imagen = imagen; }
+    public void setSegundo_nombre(String segundo_nombre) {
+        this.segundo_nombre = segundo_nombre;
+    }
 
-    public String getPedidoConsumidor() { return pedidoConsumidor; }
-    public void setPedidoConsumidor(String pedidoConsumidor) { this.pedidoConsumidor = pedidoConsumidor; }
+    public String getPrimer_apellido() {
+        return primer_apellido;
+    }
 
-    public Timestamp getFecha() { return fecha; }
-    public void setFecha(Timestamp fecha) { this.fecha = fecha; }
+    public void setPrimer_apellido(String primer_apellido) {
+        this.primer_apellido = primer_apellido;
+    }
+
+    public String getSegundo_apellido() {
+        return segundo_apellido;
+    }
+
+    public void setSegundo_apellido(String segundo_apellido) {
+        this.segundo_apellido = segundo_apellido;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public byte[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(byte[] imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getPedido_consumidor() {
+        return pedido_consumidor;
+    }
+
+    public void setPedido_consumidor(String pedido_consumidor) {
+        this.pedido_consumidor = pedido_consumidor;
+    }
+
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
 }

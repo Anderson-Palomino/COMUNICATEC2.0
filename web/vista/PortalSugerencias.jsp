@@ -16,7 +16,7 @@
 
 
         <div class="containerPS">
-            <form action="./SVPortalSugerencias" method="post" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/SVPortalSugerencias" method="post" enctype="multipart/form-data">
 
                 <fieldset>
                     <legend>Portal de Sugerencias</legend>
@@ -30,7 +30,7 @@
                             placeholder="Primer Nombre*" 
                             required title="Primer Nombre *" 
                             pattern="{0-9}+" 
-                            maxlength="8"
+                            maxlength="50"
                             />
                         <input 
                             type="text" 
@@ -38,7 +38,7 @@
                             placeholder="Segundo Nombre *" 
                             required title="Segundo Nombre *" 
                             pattern="{0-9}+" 
-                            maxlength="8" 
+                            maxlength="50" 
                             />
                         <input 
                             type="text" 
@@ -46,7 +46,7 @@
                             placeholder="Primer Apellido *" 
                             required title="Primer Apellido *" 
                             pattern="{0-9}+" 
-                            maxlength="8" 
+                            maxlength="50" 
                             />
                         <input 
                             type="text" 
@@ -54,7 +54,7 @@
                             placeholder="Segundo Apellido *" 
                             required title="Segundo Apellido *" 
                             pattern="{0-9}+" 
-                            maxlength="8" 
+                            maxlength="50" 
                             />
                         <input 
                             type="text" 
@@ -62,7 +62,7 @@
                             placeholder="Celular *" 
                             required title="Celular *" 
                             pattern="{0-9}+" 
-                            maxlength="8" 
+                            maxlength="50" 
                             />
                         <input 
                             type="text" 
@@ -70,7 +70,7 @@
                             placeholder="Correo *" 
                             required title="Correo *"
                             pattern="{0-9}+" 
-                            maxlength="8" />
+                            maxlength="50" />
                         <label>Observaciones</label>
                         <textarea name="Obs" rows="4" cols="20">
                         </textarea>
