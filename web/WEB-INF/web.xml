@@ -4,10 +4,6 @@
         <servlet-name>SVPortalSugerencias</servlet-name>
         <servlet-class>controladores.SVPortalSugerencias</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>SVPortalSugerencias</servlet-name>
-        <url-pattern>/SVPortalSugerencias</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
