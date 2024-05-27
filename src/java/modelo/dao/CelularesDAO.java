@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.dto.CelularesDTO;
-import servicios.conexiones.ConectaDB;
+import servicios.ConexionDB;
 
 public class CelularesDAO {
     Connection cnx;
-    ConectaDB cdb = new ConectaDB();
+    ConexionDB cdb = new ConexionDB();
     PreparedStatement ps;
     ResultSet rs;
 
@@ -21,7 +21,7 @@ public List listar() {
         String SQL = "SELECT * FROM celulares WHERE categoria='ios'";
 
         try {
-            cnx = cdb.getConexion();
+            cnx = cdb.obtenerConexion();
             ps = cnx.prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -43,7 +43,7 @@ public List listar() {
         String SQL = "SELECT * FROM celulares WHERE categoria='android'";
 
         try {
-            cnx = cdb.getConexion();
+            cnx = cdb.obtenerConexion();
             ps = cnx.prepareStatement(SQL);
             rs = ps.executeQuery();
 
