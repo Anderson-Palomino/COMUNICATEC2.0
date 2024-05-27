@@ -43,7 +43,6 @@
                             <li><a href="${pageContext.request.contextPath}/vista/Registrarse.jsp">Registrarse</a></li>
                             </c:otherwise>
                         </c:choose>
-
                 </ul>
             </nav> <!-- Fin de la barra de navegación -->
         </header>

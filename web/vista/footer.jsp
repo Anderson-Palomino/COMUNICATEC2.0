@@ -4,7 +4,7 @@
     <div class="containerFooter">
         <div class="col-left">
             <div class="logo-and-copy">
-                <img src="../img/logo.png" alt="">
+                <img src="${pageContext.request.contextPath}/img/logo.png" alt="">
                 <p class="copy">® 2023 COMUNICATEC.</p>
             </div>
 
@@ -19,15 +19,15 @@
         <div class="col-right">
             <ul class="links-container">
                 <h4>Solución</h4>
-                <li><a href="PreguntasFrecuentes.jsp">Preguntas Frecuentes</a></li>
-                <li><a href="PortalSugerencias.jsp">Portal de Sugerencias</a></li>
-                <li><a href="LibroReclamaciones.jsp">Libro de Reclamaciones</a></li>
+                <li><a href="${pageContext.request.contextPath}/vista/PreguntasFrecuentes.jsp">Preguntas Frecuentes</a></li>
+                <li><a href="${pageContext.request.contextPath}/vista/PortalSugerencias.jsp">Portal de Sugerencias</a></li>
+                <li><a href="${pageContext.request.contextPath}/vista/LibroReclamaciones.jsp">Libro de Reclamaciones</a></li>
             </ul>
             <ul class="links-container">
                 <h4>Recursos</h4>
 
-                <li><a class="buttom" href="Contactanos.jsp">Contáctanos</a></li>
-                <li><a class="buttom" href="Nosotros.jsp">Nosotros</a></li>
+                <li><a class="buttom" href="${pageContext.request.contextPath}/vista/Contactanos.jsp">Contáctanos</a></li>
+                <li><a class="buttom" href="${pageContext.request.contextPath}/vista/Nosotros.jsp">Nosotros</a></li>
             </ul>
             <ul class="links-container">
                 <h4>Participantes</h4>
