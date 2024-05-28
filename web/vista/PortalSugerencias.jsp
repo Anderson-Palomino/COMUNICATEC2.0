@@ -1,101 +1,73 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Portal de sugerencias</title>
-        <link href="../css/headerCSS.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/footerCSS.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/portalSugerenciasCSS.css" rel="stylesheet" type="text/css"/>
+        <title>Registro de Sugerencias</title>
+        <link href="${pageContext.request.contextPath}/css/headerCSS.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/footerCSS.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/portalSugerenciasCSS.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link rel="icon" href="../img/favicon_2.png" />
+        <link rel="icon" href="${pageContext.request.contextPath}/img/favicon_2.png" />
     </head>
     <jsp:include page="header.jsp" />
-    <body>   
-
-
+    <body>
         <div class="containerPS">
+            <c:if test="${not empty mensaje}">
+                <p style="color: green">${mensaje}</p>
+            </c:if>
+            <c:if test="${not empty error}">
+                <p style="color: red">${error}</p>
+            </c:if>
             <form action="${pageContext.request.contextPath}/SVPortalSugerencias" method="post" enctype="multipart/form-data">
-
                 <fieldset>
                     <legend>Portal de Sugerencias</legend>
-                    <select name="Documentos">
+                    <label for="Documentos">Tipo de Documento:</label>
+                    <select name="Documentos" id="Documentos">
                         <option value="d" selected>DNI</option>
                         <option value="c">Carnet de Identidad</option>
-                       
-                        <input 
-                            type="text" 
-                            name="NroDoc" 
-                            placeholder="Primer Nombre*" 
-                            required title="Primer Nombre *" 
-                            pattern="{0-9}+" 
-                            maxlength="50"
-                            />
-                        <input 
-                            type="text" 
-                            name="NroDoc" 
-                            placeholder="Segundo Nombre *" 
-                            required title="Segundo Nombre *" 
-                            pattern="{0-9}+" 
-                            maxlength="50" 
-                            />
-                        <input 
-                            type="text" 
-                            name="NroDoc" 
-                            placeholder="Primer Apellido *" 
-                            required title="Primer Apellido *" 
-                            pattern="{0-9}+" 
-                            maxlength="50" 
-                            />
-                        <input 
-                            type="text" 
-                            name="NroDoc" 
-                            placeholder="Segundo Apellido *" 
-                            required title="Segundo Apellido *" 
-                            pattern="{0-9}+" 
-                            maxlength="50" 
-                            />
-                        <input 
-                            type="text" 
-                            name="Celular" 
-                            placeholder="Celular *" 
-                            required title="Celular *" 
-                            pattern="{0-9}+" 
-                            maxlength="50" 
-                            />
-                        <input 
-                            type="text" 
-                            name="Correo" 
-                            placeholder="Correo *" 
-                            required title="Correo *"
-                            pattern="{0-9}+" 
-                            maxlength="50" />
-                        <label>Observaciones</label>
-                        <textarea name="Obs" rows="4" cols="20">
-                        </textarea>
-                        <div class="input-group">
-                            <label for="imagen_reclamante">Adjuntar una imagen:NO debe ser mayor a 2MB</label>
-                            <input type="file" id="imagen_reclamante"  accept="image/*">
-                        </div>
+                    </select>
 
-                        <!-- Vista previa de la imagen -->
-                        <div class="input-group">
-                            <label>Vista Previa de la Imagen:</label><br>
-                            <img id="vista_previa" src="#" alt="Vista Previa" style="max-width: 300px; max-height: 300px;">
-                        </div>
+                    <label for="NroDoc">Número de Documento:</label>
+                    <input type="text" name="NroDoc" placeholder="Número de Documento *" required title="Número de Documento *" pattern="\d+" maxlength="20" />
 
-                        <div class="input-group">
-                            <label for="pedido_consumidor">Pedido del consumidor:</label>
-                            <textarea id="pedido_consumidor" name="pedido_consumidor" rows="4"></textarea>
-                        </div>
-                        <input type="submit" value="Enviar" name="accion" />
+                    <label for="PrimerNombre">Primer Nombre:</label>
+                    <input type="text" name="PrimerNombre" placeholder="Primer Nombre *" required title="Primer Nombre *" maxlength="50" />
+
+                    <label for="SegundoNombre">Segundo Nombre:</label>
+                    <input type="text" name="SegundoNombre" placeholder="Segundo Nombre" maxlength="50" />
+
+                    <label for="PrimerApellido">Primer Apellido:</label>
+                    <input type="text" name="PrimerApellido" placeholder="Primer Apellido *" required title="Primer Apellido *" maxlength="50" />
+
+                    <label for="SegundoApellido">Segundo Apellido:</label>
+                    <input type="text" name="SegundoApellido" placeholder="Segundo Apellido" maxlength="50" />
+
+                    <label for="Celular">Celular:</label>
+                    <input type="text" name="Celular" placeholder="Celular *"  pattern="\d+" maxlength="15" />
+
+                    <label for="Correo">Correo:</label>
+                    <input type="email" name="Correo" placeholder="Correo *" required title="Correo *" maxlength="100" />
+
+                    <label for="Obs">Observaciones:</label>
+                    <textarea name="Obs" rows="4" cols="20"></textarea>
+
+                    <div class="input-group">
+                        <label for="imagen_reclamante">Adjuntar una imagen: NO debe ser mayor a 2MB</label>
+                        <input type="file" name="imagen_reclamante" id="imagen_reclamante" accept="image/*">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pedido_consumidor">Pedido del consumidor:</label>
+                        <textarea id="pedido_consumidor" name="pedido_consumidor" rows="4"></textarea>
+                    </div>
+
+                    <input type="submit" value="Enviar" />
                 </fieldset>
-
             </form>
-
         </div>
-
     </body>
     <jsp:include page="footer.jsp" />
 </html>
+

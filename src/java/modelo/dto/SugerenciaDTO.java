@@ -3,25 +3,21 @@ package modelo.dto;
 import java.sql.Timestamp;
 
 public class SugerenciaDTO {
-
     private int id;
-    private String tipo_documento;
-    private String nro_documento;
-    private String primer_nombre;
-    private String segundo_nombre;
-    private String primer_apellido;
-    private String segundo_apellido;
+    private String tipoDocumento;
+    private String nroDocumento;
+    private String primerNombre;
+    private String segundoNombre;
+    private String primerApellido;
+    private String segundoApellido;
     private String celular;
     private String correo;
     private String observaciones;
     private byte[] imagen;
-    private String pedido_consumidor;
+    private String pedidoConsumidor;
     private Timestamp fecha;
 
-    public SugerenciaDTO() {
-    }
-    
-   
+    // Getters y Setters
 
     public int getId() {
         return id;
@@ -31,52 +27,52 @@ public class SugerenciaDTO {
         this.id = id;
     }
 
-    public String getTipo_documento() {
-        return tipo_documento;
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setTipo_documento(String tipo_documento) {
-        this.tipo_documento = tipo_documento;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
-    public String getNro_documento() {
-        return nro_documento;
+    public String getNroDocumento() {
+        return nroDocumento;
     }
 
-    public void setNro_documento(String nro_documento) {
-        this.nro_documento = nro_documento;
+    public void setNroDocumento(String nroDocumento) {
+        this.nroDocumento = nroDocumento;
     }
 
-    public String getPrimer_nombre() {
-        return primer_nombre;
+    public String getPrimerNombre() {
+        return primerNombre;
     }
 
-    public void setPrimer_nombre(String primer_nombre) {
-        this.primer_nombre = primer_nombre;
+    public void setPrimerNombre(String primerNombre) {
+        this.primerNombre = primerNombre;
     }
 
-    public String getSegundo_nombre() {
-        return segundo_nombre;
+    public String getSegundoNombre() {
+        return segundoNombre;
     }
 
-    public void setSegundo_nombre(String segundo_nombre) {
-        this.segundo_nombre = segundo_nombre;
+    public void setSegundoNombre(String segundoNombre) {
+        this.segundoNombre = segundoNombre;
     }
 
-    public String getPrimer_apellido() {
-        return primer_apellido;
+    public String getPrimerApellido() {
+        return primerApellido;
     }
 
-    public void setPrimer_apellido(String primer_apellido) {
-        this.primer_apellido = primer_apellido;
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
     }
 
-    public String getSegundo_apellido() {
-        return segundo_apellido;
+    public String getSegundoApellido() {
+        return segundoApellido;
     }
 
-    public void setSegundo_apellido(String segundo_apellido) {
-        this.segundo_apellido = segundo_apellido;
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
     }
 
     public String getCelular() {
@@ -111,12 +107,12 @@ public class SugerenciaDTO {
         this.imagen = imagen;
     }
 
-    public String getPedido_consumidor() {
-        return pedido_consumidor;
+    public String getPedidoConsumidor() {
+        return pedidoConsumidor;
     }
 
-    public void setPedido_consumidor(String pedido_consumidor) {
-        this.pedido_consumidor = pedido_consumidor;
+    public void setPedidoConsumidor(String pedidoConsumidor) {
+        this.pedidoConsumidor = pedidoConsumidor;
     }
 
     public Timestamp getFecha() {
