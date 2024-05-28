@@ -19,7 +19,7 @@
         <div class="col-right">
             <ul class="links-container">
                 <h4>Solución</h4>
-                <li><a href="${pageContext.request.contextPath}/vista/PreguntasFrecuentes.jsp">Preguntas Frecuentes</a></li>
+                <li><a href="${pageContext.request.contextPath}/SVPreguntasFrecuentes">Preguntas Frecuentes</a></li>
                 <li><a href="${pageContext.request.contextPath}/vista/PortalSugerencias.jsp">Portal de Sugerencias</a></li>
                 <li><a href="${pageContext.request.contextPath}/vista/LibroReclamaciones.jsp">Libro de Reclamaciones</a></li>
             </ul>

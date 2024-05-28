@@ -2,7 +2,7 @@
 <%@page import="modelo.dto.PreguntaDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="servicios.conexiones.ConectaDB"%>
+<%@page import="servicios.ConexionDB"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
@@ -19,19 +19,20 @@
         <link href="<%=request.getContextPath()%>/css/footerCSS.css" rel="stylesheet" type="text/css"/>
         <link href="<%=request.getContextPath()%>/css/preguntasFrecuenciasCSS.css" rel="stylesheet" type="text/css"/>
         <link href="<%=request.getContextPath()%>/css/style_preguntasfre.css" rel="stylesheet" type="text/css"/>
+        <link href="<%=request.getContextPath()%>/css/pf.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="icon" href="<%=request.getContextPath()%>/img/favicon_2.png" />
     </head>
 
     <jsp:include page="header.jsp" />
     <body>           
-        
+
         <div class="containerPF">
-            
+
             <h1>Preguntas Frecuentes</h1>
             <div class="categorias" id="categorias">
-                <div class="categoria activa" data-categoria="metodos-pago">
-                    <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.19 7h2.81v15h-21v-5h-2.81v-15h21v5zm1.81 1h-19v13h19v-13zm-9.5 1c3.036 0 5.5 2.464 5.5 5.5s-2.464 5.5-5.5 5.5-5.5-2.464-5.5-5.5 2.464-5.5 5.5-5.5zm0 1c2.484 0 4.5 2.016 4.5 4.5s-2.016 4.5-4.5 4.5-4.5-2.016-4.5-4.5 2.016-4.5 4.5-4.5zm.5 8h-1v-.804c-.767-.16-1.478-.689-1.478-1.704h1.022c0 .591.326.886.978.886.817 0 1.327-.915-.167-1.439-.768-.27-1.68-.676-1.68-1.693 0-.796.573-1.297 1.325-1.448v-.798h1v.806c.704.161 1.313.673 1.313 1.598h-1.018c0-.788-.727-.776-.815-.776-.55 0-.787.291-.787.622 0 .247.134.497.957.768 1.056.344 1.663.845 1.663 1.746 0 .651-.376 1.288-1.313 1.448v.788zm6.19-11v-4h-19v13h1.81v-9h17.19z"/></svg>
+                <div class="categoria activa" data-categoria="metodos-pago" id="categoria-metodos-pago">
+                    <svg  viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M21.19 7h2.81v15h-21v-5h-2.81v-15h21v5zm1.81 1h-19v13h19v-13zm-9.5 1c3.036 0 5.5 2.464 5.5 5.5s-2.464 5.5-5.5 5.5-5.5-2.464-5.5-5.5 2.464-5.5 5.5-5.5zm0 1c2.484 0 4.5 2.016 4.5 4.5s-2.016 4.5-4.5 4.5-4.5-2.016-4.5-4.5 2.016-4.5 4.5-4.5zm.5 8h-1v-.804c-.767-.16-1.478-.689-1.478-1.704h1.022c0 .591.326.886.978.886.817 0 1.327-.915-.167-1.439-.768-.27-1.68-.676-1.68-1.693 0-.796.573-1.297 1.325-1.448v-.798h1v.806c.704.161 1.313.673 1.313 1.598h-1.018c0-.788-.727-.776-.815-.776-.55 0-.787.291-.787.622 0 .247.134.497.957.768 1.056.344 1.663.845 1.663 1.746 0 .651-.376 1.288-1.313 1.448v.788zm6.19-11v-4h-19v13h1.81v-9h17.19z"/></svg>
                     <p>Métodos de pago</p>
                 </div>
                 <div class="categoria" data-categoria="entregas">
@@ -48,130 +49,49 @@
                 </div>
             </div>
             <br />
-            <h1>--------</h1>
-          
-            <c:forEach var="p1" items="${cat1}">
-                <div class="pregunta">
-                    <p>preguntas</p>
-                <p>${p1.getPregunta()}</p>
-                <p>${p1.getRespuesta()}</p>
-                </div>
-            </c:forEach>
-           
-                
+            
+                <c:forEach var="p1" items="${cat1}">
+                    <div class="faq-item">
+                    <div class="question">
+                        <h2>${p1.getPregunta()}</h2>
+                        <div class="icon">+</div>
+                    </div>
+                    <div class="answer">
+                        <p>${p1.getRespuesta()}</p>
+                    </div>
+                    </div>
+                </c:forEach>
+            
+
             <c:forEach var="p2" items="${cat2}">
                 <p>${p2.getPregunta()}</p>
                 <p>${p2.getRespuesta()}</p>
             </c:forEach>
-            
-            <c:forEach var="p" items="${cat3}">
+
+            <c:forEach var="p3" items="${cat3}">
                 <p>${p3.getPregunta()}</p>
                 <p>${p3.getRespuesta()}</p>
             </c:forEach>
-                
-            <c:forEach var="p" items="${cat4}">
+
+            <c:forEach var="p4" items="${cat4}">
                 <p>${p4.getPregunta()}</p>
                 <p>${p4.getRespuesta()}</p>
             </c:forEach>
-                       
 
-                <h1>---------</h1>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Ofrecen garantía en los productos?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>Sí, ofrecemos garantía en todos nuestros productos. En ComunicaTEC, estamos comprometidos con la satisfacción
-                        del cliente y la calidad de nuestros productos. Nuestra política de garantía está diseñada para brindarte tranquilidad
-                        en cada compra. Por ello, nuestros teléfonos vienen con la garantía del fabricante, que varía según la
-                        marca y el modelo. Esto cubre defectos de fabricación y problemas que puedan surgir con el uso normal.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Ofrecen envío internacional?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>
-                        En este momento, lamentablemente no ofrecemos envío internacional. En ComunicaTEC, valoramos a
-                        todos nuestros clientes y agradecemos tu interés en nuestros productos. Actualmente, nuestros servicios
-                        de envío están limitados a todo el Perú.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Cómo contacto al servicio al cliente?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>
-                        En ComunicaTEC, nos esforzamos por ofrecer un servicio al cliente excepcional y estamos aquí para ayudarte en cualquier momento.
-                        Puedes ponerte en contacto con nuestro equipo de servicio en <a href="Contactanos.php">Contáctenos</a>
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Cuáles son las marcas de teléfonos que venden?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>
-                        En nuestra tienda, ofrecemos una amplia selección de teléfonos de alta calidad de dos marcas líderes en el mercado: Samsung y iPhone. 
-                        Estas dos marcas ofrecen una amplia variedad de modelos y opciones para satisfacer las necesidades de nuestros clientes. Si estás 
-                        interesado en adquirir un teléfono, te invitamos a explorar nuestra gama de productos Samsung y iPhone para encontrar el dispositivo 
-                        que mejor se adapte a tus preferencias y requisitos. 
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Qué medidas de seguridad toman para proteger mis datos personales durante la compra?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>
-                        En ComunicaTEC, nos tomamos muy en serio la seguridad de los datos personales de nuestros clientes. Implementamos
-                        diversas medidas y protocolos para garantizar la protección de su información durante todo el proceso de compra.
-                        A continuación, destacamos algunas de las medidas que tomamos: <br><br>
-                        Política de Privacidad: Tenemos una política de privacidad detallada que describe cómo recopilamos, utilizamos y
-                        protegemos sus datos personales. Esta política está disponible para que la revise en cualquier momento.<br><br>
-                        Monitoreo de Actividad: Monitoreamos constantemente la actividad en nuestro sitio web para detectar y prevenir
-                        actividades sospechosas o no autorizadas.<br><br>
-                        Capacitación del Personal: Nuestro personal recibe capacitación sobre prácticas seguras de manejo de datos y está
-                        comprometido en mantener la confidencialidad de la información del cliente.<br><br>
-                        Respuesta a Incidentes: Tenemos un plan de respuesta a incidentes en caso de que ocurra algún problema de seguridad.
-                        Esto nos permite tomar medidas rápidas para proteger sus datos en caso de una violación de seguridad.<br><br>
-                        Borrado Seguro de Datos: Siempre que sea necesario, eliminamos de manera segura los datos personales que ya no son
-                        relevantes para su compra.
-                    </p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="question">
-                    <h2>¿Tienen ofertas o descuentos especiales?</h2>
-                    <div class="icon">+</div>
-                </div>
-                <div class="answer">
-                    <p>
-
-                    </p>
-                </div>
-            </div>
         </div>
+            
         <script src="<%=request.getContextPath()%>/js/preguntasFrecuentes.js"></script>
     </body>
-    <jsp:include page="footer.jsp" />
+    
+    
 
     <script
         src="https://kit.fontawesome.com/81581fb069.js"
         crossorigin="anonymous"
+        >
 
-    ></script>
+    </script>
+
     <script>const categorias = document.querySelectorAll('#categorias .categoria');
         const contenedorPreguntas = document.querySelectorAll('.contenedor-preguntas');
         let categoriaActiva = null;
@@ -225,4 +145,6 @@
 
             });
             });</script>
+    
+    <jsp:include page="footer.jsp" />
 </html>
