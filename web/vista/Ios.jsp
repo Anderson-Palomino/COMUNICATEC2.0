@@ -16,17 +16,17 @@
     <body>
         <h1>CELULARES</h1>
         <c:forEach var="p" items="${ios}">
-                   <div class="card" style="width: 18rem;">
-                       <img src="${pageContext.request.contextPath}/img/${p.getImagen()}" class="card-img-top" alt="ios">
-                       <div class="card-body">
-                           <h5 class="card-title">${p.getNombre()}</h5>
-                           <p class="card-text">S/.${p.getPrecio()}</p>
-                           <a href="#" class="btn btn-primary">AÑADIR</a>
-                       </div>
-                   </div>
-    </c:forEach>
+            <div class="card" style="width: 18rem;">
+                <img src="${pageContext.request.contextPath}/img/${p.getImagen()}" class="card-img-top" alt="ios">
+                <div class="card-body">
+                    <h5 class="card-title">${p.getNombre()}</h5>
+                    <p class="card-text">S/.${p.getPrecio()}</p>
+                    <a href="#" class="btn btn-primary">AÑADIR</a>
+                </div>
+            </div>
+        </c:forEach>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-<jsp:include page="footer.jsp" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    <jsp:include page="footer.jsp" />
 </html>

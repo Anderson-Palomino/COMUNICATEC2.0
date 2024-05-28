@@ -12,6 +12,10 @@
         <servlet-name>SVAndroid</servlet-name>
         <servlet-class>controladores.SVAndroid</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVPreguntasFrecuentes</servlet-name>
+        <servlet-class>controladores.SVPreguntasFrecuentes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVCelulares</servlet-name>
         <url-pattern>/SVCelulares</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>SVAndroid</servlet-name>
         <url-pattern>/SVAndroid</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVPreguntasFrecuentes</servlet-name>
+        <url-pattern>/SVPreguntasFrecuentes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
