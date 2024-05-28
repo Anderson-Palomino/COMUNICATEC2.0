@@ -10,7 +10,7 @@ import modelo.dto.CelularesDTO;
 import servicios.ConexionDB;
 
 public class CelularesDAO {
-    Connection cnx;
+    Connection conexion;
     ConexionDB cdb = new ConexionDB();
     PreparedStatement ps;
     ResultSet rs;
@@ -18,11 +18,11 @@ public class CelularesDAO {
 
 public List listar() {
         List<CelularesDTO> ios = new ArrayList<>();
-        String SQL = "SELECT * FROM celulares WHERE categoria='ios'";
+        String SQL = "SELECT * FROM celulares WHERE tipo='ios'";
 
         try {
-            cnx = cdb.obtenerConexion();
-            ps = cnx.prepareStatement(SQL);
+            conexion = cdb.obtenerConexion();
+            ps = conexion.prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {
                 CelularesDTO ai = new CelularesDTO();
@@ -40,11 +40,11 @@ public List listar() {
     
     public List list() {
         List<CelularesDTO> android = new ArrayList<>();
-        String SQL = "SELECT * FROM celulares WHERE categoria='android'";
+        String SQL = "SELECT * FROM celulares WHERE tipo='android'";
 
         try {
-            cnx = cdb.obtenerConexion();
-            ps = cnx.prepareStatement(SQL);
+            conexion = cdb.obtenerConexion();
+            ps = conexion.prepareStatement(SQL);
             rs = ps.executeQuery();
 
             while (rs.next()) {

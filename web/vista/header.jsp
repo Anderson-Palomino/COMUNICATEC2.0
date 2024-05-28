@@ -11,7 +11,7 @@
     <head>
         <!-- Aquí irían otras configuraciones de tu encabezado, como los enlaces a CSS y scripts -->
     </head>
-    <body>
+    
         <header class="containerHeader">
             <a href="${pageContext.request.contextPath}/index.jsp" class="logoMenu">
                 <img src="${pageContext.request.contextPath}/img/logo.png" alt="Logo"/>
@@ -46,5 +46,5 @@
                 </ul>
             </nav> <!-- Fin de la barra de navegación -->
         </header>
-    </body>
+    
 </html>

@@ -19,4 +19,9 @@ public class ConexionDB {
         }
         return conexion;
     }
+    
+    public static void main(String[] args) throws SQLException{
+        Connection cn = new ConexionDB().obtenerConexion();
+        System.out.println(""+cn.getCatalog());
+    }
 }
