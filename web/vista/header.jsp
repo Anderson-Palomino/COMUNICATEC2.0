@@ -23,8 +23,8 @@
                         <a href="#" id="submenubtn">Celulares <i class="fas fa-chevron-down"></i></a>
                         <!-- Agrega la clase 'fas' para indicar que es un ícono de FontAwesome -->
                         <ul class="submenu">
-                            <li><a href="${pageContext.request.contextPath}/VentanaIOS.jsp">IOS</a></li>
-                            <li><a href="${pageContext.request.contextPath}/VentanaAndroid.jsp">Android</a></li>
+                            <li><a href="${pageContext.request.contextPath}/SVIos">IOS</a></li>
+                            <li><a href="${pageContext.request.contextPath}/SVAndroid">Android</a></li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/vista/Contactanos.jsp">Contactanos</a></li>

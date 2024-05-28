@@ -25,13 +25,13 @@ public List listar() {
             ps = cnx.prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {
-                CelularesDTO c = new CelularesDTO();
-                c.setId(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setTipo(rs.getString(3));
-                c.setPrecio(rs.getDouble(4));
-                c.setImagen(rs.getString(5));
-                ios.add(c);
+                CelularesDTO ai = new CelularesDTO();
+                ai.setId(rs.getInt(1));
+                ai.setNombre(rs.getString(2));
+                ai.setTipo(rs.getString(3));
+                ai.setPrecio(rs.getDouble(4));
+                ai.setImagen(rs.getString(5));
+                ios.add(ai);
             }
         } catch (SQLException e) {
         }
