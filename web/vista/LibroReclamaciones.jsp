@@ -20,7 +20,7 @@
                 Dirección: Av. Angamos Oeste Nro. 120 Miraflores, Lima, Perú. <br>
                 Hora: 10:07 AM Fecha: 18/09/2023
             </p>
-            <form action="SVLibroReclamaciones" method="post" enctype="multipart/form-data">
+            <form action="RegistrarReclamacionServlet" method="post" enctype="multipart/form-data">
                 <h2>Identificación del consumidor reclamante</h2>
 
                 <div class="input-group">
