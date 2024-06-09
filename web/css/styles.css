@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 jun. 2024, 11:40:39 p. m.
+    Author     : destr
+*/
+body {
+    animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% { background-color: white; }
+    100% { background-color: black; }
+}
+
+.producto {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    width: 18rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+

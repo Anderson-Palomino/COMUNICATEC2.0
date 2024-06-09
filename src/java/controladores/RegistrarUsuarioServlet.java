@@ -6,40 +6,51 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.dao.UsuarioDAO;
 import modelo.dto.UsuarioDTO;
+import servicios.EnviarCorreo;
 
 @WebServlet(name = "RegistrarUsuarioServlet", urlPatterns = {"/RegistrarUsuarioServlet"})
 public class RegistrarUsuarioServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
         String nombres = request.getParameter("nombres");
         String apellidos = request.getParameter("apellidos");
         String correo = request.getParameter("correo");
         String contrasena = request.getParameter("contrasena");
 
+        EnviarCorreo ec = new EnviarCorreo();
+        String code = ec.getRandom();
+
+        UsuarioDTO usuarioDTO = new UsuarioDTO(nombres, apellidos, correo, contrasena, code);
+        boolean test = false;
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        boolean correoExiste = usuarioDAO.correoExiste(correo);
+        
+        try {
+            if (usuarioDAO.registrarUsuario(usuarioDTO)) {
+                test = ec.enviarEmail(usuarioDTO);
 
-        if (correoExiste) {
-            request.setAttribute("error", "El correo ya está registrado");
-            request.getRequestDispatcher("/vista/Registrarse.jsp").forward(request, response);
-        } else {
-            UsuarioDTO usuario = new UsuarioDTO();
-            usuario.setNombres(nombres);
-            usuario.setApellidos(apellidos);
-            usuario.setCorreo(correo);
-            usuario.setContrasena(contrasena);
-
-            boolean registrado = usuarioDAO.registrarUsuario(usuario);
-
-            if (registrado) {
-                request.setAttribute("mensaje", "Usuario registrado correctamente");
+                if (test) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("authcode", usuarioDTO);
+                    response.sendRedirect("./vista/verificar.jsp");
+                } else {
+                    request.setAttribute("error", "Error al enviar el correo de verificación. Por favor, inténtelo de nuevo.");
+                    request.getRequestDispatcher("./vista/Registrarse.jsp").forward(request, response);
+                }
             } else {
-                request.setAttribute("error", "Error al registrar usuario");
+                request.setAttribute("error", "El correo ya está registrado.");
+                request.getRequestDispatcher("./vista/Registrarse.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("/vista/Registrarse.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Ocurrió un error al procesar la solicitud. Por favor, inténtelo de nuevo.");
+            request.getRequestDispatcher("./vista/Registrarse.jsp").forward(request, response);
         }
     }
 
@@ -60,3 +71,5 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         return "Short description";
     }
 }
+
+

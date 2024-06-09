@@ -16,18 +16,20 @@ public class UsuarioDAO {
 
     public UsuarioDTO validarUsuario(String correo, String contrasena) {
         UsuarioDTO usuario = null;
-        String sql = "SELECT nombres, correo, contrasena FROM usuarios WHERE correo = ? AND contrasena = ?";
+        String sql = "SELECT id, nombres, apellidos, correo, contrasena, code FROM usuarios WHERE correo = ? AND contrasena = ?";
 
-        try (Connection conn = ConexionDB.obtenerConexion();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
             ps.setString(1, correo);
             ps.setString(2, contrasena);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     usuario = new UsuarioDTO();
+                    usuario.setId(rs.getInt("id"));
                     usuario.setNombres(rs.getString("nombres"));
+                    usuario.setApellidos(rs.getString("apellidos"));
                     usuario.setCorreo(rs.getString("correo"));
                     usuario.setContrasena(rs.getString("contrasena"));
+                    usuario.setCode(rs.getString("code"));
                 }
             }
         } catch (SQLException e) {
@@ -38,17 +40,20 @@ public class UsuarioDAO {
     }
 
     public boolean registrarUsuario(UsuarioDTO usuario) {
+        System.out.println("Correo ya registrado: " + usuario.getCorreo());
         if (correoExiste(usuario.getCorreo())) {
             return false;
         }
-        
-        String query = "INSERT INTO usuarios (nombres, apellidos, correo, contrasena) VALUES (?, ?, ?, ?)";
+
+        String query = "INSERT INTO usuarios (nombres, apellidos, correo, contrasena, code) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conexion.prepareStatement(query)) {
             pstmt.setString(1, usuario.getNombres());
             pstmt.setString(2, usuario.getApellidos());
             pstmt.setString(3, usuario.getCorreo());
             pstmt.setString(4, usuario.getContrasena());
+            pstmt.setString(5, usuario.getCode());
             int filasAfectadas = pstmt.executeUpdate();
+            System.out.println("Usuario registrado: " + usuario.getCorreo());
             return filasAfectadas > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -69,6 +74,7 @@ public class UsuarioDAO {
         }
     }
 }
+
 
 
 

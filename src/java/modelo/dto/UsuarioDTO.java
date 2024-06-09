@@ -1,25 +1,23 @@
 package modelo.dto;
 
-/**
- *
- * @author ander
- */
 public class UsuarioDTO {
     private int id;
     private String nombres;
     private String apellidos;
     private String correo; 
     private String contrasena;
+    private String code;
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(int id, String nombres, String apellidos, String correo, String contraseña) {
-        this.id = id;
+    public UsuarioDTO(String nombres, String apellidos, String correo, String contrasena,String code) {
+        
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.correo = correo;
-        this.contrasena = contraseña;
+        this.contrasena = contrasena;
+        this.code=code;
     }
 
     public int getId() {
@@ -61,5 +59,12 @@ public class UsuarioDTO {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }
