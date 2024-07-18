@@ -1,0 +1,93 @@
+body {
+    margin-bottom: 120px; /* Ajusta el valor según la altura de tu header */
+}
+/* Estilos generales del formulario */
+.formulario {
+    margin-top: 120px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formulario fieldset {
+    border: none;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.formulario input[type="text"], .formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la tabla */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.tablaRep {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tablaRep thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.tablaRep th, .tablaRep td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tablaRep tr:hover {
+    background-color: #f1f1f1;
+}
+
+.acciones {
+    text-align: center;
+}
+
+.acciones a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.acciones a:hover {
+    color: #0056b3;
+}
+
+.tablaRep img {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}

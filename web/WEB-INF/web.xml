@@ -16,6 +16,10 @@
         <servlet-name>SVPreguntasFrecuentes</servlet-name>
         <servlet-class>controladores.SVPreguntasFrecuentes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVADMIcelular</servlet-name>
+        <servlet-class>controladores.SVADMIcelular</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVCelulares</servlet-name>
         <url-pattern>/SVCelulares</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>SVPreguntasFrecuentes</servlet-name>
         <url-pattern>/SVPreguntasFrecuentes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVADMIcelular</servlet-name>
+        <url-pattern>/SVADMIcelular</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

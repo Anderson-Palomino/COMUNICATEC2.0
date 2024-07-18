@@ -57,6 +57,4 @@ public class CelularesDTO {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
-    
 }

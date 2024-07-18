@@ -19,17 +19,9 @@
             <nav class="navegador"> <!-- Barra de navegación -->
                 <ul class="menu">
                     <li><a href="${pageContext.request.contextPath}/index.jsp">Inicio</a></li>
-                    <li><a href="${pageContext.request.contextPath}/SVADMIcelular">CELadmi</a></li>
-                    <li>
-                        <a href="#" id="submenubtn">Celulares <i class="fas fa-chevron-down"></i></a>
-                        <!-- Agrega la clase 'fas' para indicar que es un ícono de FontAwesome -->
-                        <ul class="submenu">
-                            <li><a href="${pageContext.request.contextPath}/SVIos">IOS</a></li>
-                            <li><a href="${pageContext.request.contextPath}/SVAndroid">Android</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/vista/Contactanos.jsp">Contactanos</a></li>
-                    <li><a href="${pageContext.request.contextPath}/vista/Nosotros.jsp">Nosotros</a></li>
+                    <li><a href="${pageContext.request.contextPath}/SVCelulares">Celulares</a></li>
+                    <li><a href="${pageContext.request.contextPath}/vista/Contactanos.jsp">Usuarios</a></li>
+                    <li><a href="${pageContext.request.contextPath}/vista/Nosotros.jsp">Ventas</a></li>
                         <c:choose>
                             <c:when test="${not empty sessionScope.usuario}">
                             <li>
@@ -39,10 +31,6 @@
                                 </ul>
                             </li>
                         </c:when>
-                        <c:otherwise>
-                            <li><a href="${pageContext.request.contextPath}/vista/Ingresar.jsp">Ingresar</a></li>
-                            <li><a href="${pageContext.request.contextPath}/vista/Registrarse.jsp">Registrarse</a></li>
-                            </c:otherwise>
                         </c:choose>
                 </ul>
             </nav> <!-- Fin de la barra de navegación -->

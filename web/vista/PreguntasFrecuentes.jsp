@@ -49,9 +49,9 @@
                 </div>
             </div>
             <br />
-            
-                <c:forEach var="p1" items="${cat1}">
-                    <div class="faq-item">
+
+            <c:forEach var="p1" items="${cat1}">
+                <div class="faq-item">
                     <div class="question">
                         <h2>${p1.getPregunta()}</h2>
                         <div class="icon">+</div>
@@ -59,9 +59,9 @@
                     <div class="answer">
                         <p>${p1.getRespuesta()}</p>
                     </div>
-                    </div>
-                </c:forEach>
-            
+                </div>
+            </c:forEach>
+
 
             <c:forEach var="p2" items="${cat2}">
                 <p>${p2.getPregunta()}</p>
@@ -79,11 +79,11 @@
             </c:forEach>
 
         </div>
-            
+
         <script src="<%=request.getContextPath()%>/js/preguntasFrecuentes.js"></script>
     </body>
-    
-    
+
+
 
     <script
         src="https://kit.fontawesome.com/81581fb069.js"
@@ -145,6 +145,6 @@
 
             });
             });</script>
-    
+
     <jsp:include page="footer.jsp" />
 </html>
