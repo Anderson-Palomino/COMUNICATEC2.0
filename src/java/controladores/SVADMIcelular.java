@@ -1,5 +1,6 @@
 package controladores;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -59,7 +60,48 @@ public class SVADMIcelular extends HttpServlet {
                     // Obtener la lista actualizada de paquetes
                     producto = celdao.cel();
                     request.setAttribute("producto", producto);
-                    request.getRequestDispatcher("./vista/ADMIcelular.jsp").forward(request, response);
+                    request.getRequestDispatcher("./vista/ADMIcelular_1.jsp").forward(request, response);
+                    break;
+                }
+
+                case "RegistrarAjax": {
+                    //Recibir parámetros del formulario
+                    String id = request.getParameter("id");
+                    String nombre = request.getParameter("nombre");
+                    String tipo = request.getParameter("tipo");
+                    String precio = request.getParameter("precio");
+                    String imagen = request.getParameter("imagen");
+
+                    // Validar y convertir idPaquete a entero
+                    int ids = 0; // Valor por defecto o manejo de error
+                    if (!id.isEmpty()) {
+                        ids = Integer.parseInt(id);
+                    }
+
+                    // Validar y convertir precioPaquete a double
+                    double precios = 0.0; // Valor por defecto o manejo de error
+                    if (!precio.isEmpty()) {
+                        precios = Double.parseDouble(precio);
+                    }
+
+                    //crear el objeto Paquete y establecer sus atributos
+                    CelularesDTO c = new CelularesDTO();
+                    //request.setAttribute("paquetes", paquetes);}
+                    c.setId(ids);
+                    c.setNombre(nombre);
+                    c.setTipo(tipo);
+                    c.setPrecio(precios);
+                    c.setImagen(imagen);
+
+                    //Insertar la sugerencia en la BD por el modelo DAO
+                    String resp = celdao.insertUpdate(c);
+                    // Obtener la lista actualizada de paquetes
+                    producto = celdao.cel();
+                    response.setContentType("application/json;charset=UTF-8");
+                    String listaProductoJson = new Gson().toJson(producto);
+                    response.getWriter().println(listaProductoJson);
+                    //request.setAttribute("producto", producto);
+                    //request.getRequestDispatcher("./vista/ADMIcelular_1.jsp").forward(request, response);
                     break;
                 }
 
@@ -77,7 +119,7 @@ public class SVADMIcelular extends HttpServlet {
                     // Obtener la lista actualizada de paquetes
                     producto = celdao.cel();
                     request.setAttribute("producto", producto);
-                    request.getRequestDispatcher("./vista/ADMIcelular.jsp").forward(request, response);
+                    request.getRequestDispatcher("./vista/ADMIcelular_1.jsp").forward(request, response);
                     break;
                 }
                 case "delete": {
@@ -92,7 +134,7 @@ public class SVADMIcelular extends HttpServlet {
                     }           // Actualizar la lista y redirigir a la página de administración
                     producto = celdao.cel();
                     request.setAttribute("producto", producto);
-                    request.getRequestDispatcher("./vista/ADMIcelular.jsp").forward(request, response);
+                    request.getRequestDispatcher("./vista/ADMIcelular_1.jsp").forward(request, response);
                     break;
                 }
                 default:
@@ -100,7 +142,7 @@ public class SVADMIcelular extends HttpServlet {
             }
         } else {
             request.setAttribute("producto", producto);
-            request.getRequestDispatcher("./vista/ADMIcelular.jsp").forward(request, response);
+            request.getRequestDispatcher("./vista/ADMIcelular_1.jsp").forward(request, response);
         }
     }
 

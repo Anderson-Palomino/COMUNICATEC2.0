@@ -1,17 +1,35 @@
 package modelo.dao;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import javax.servlet.ServletContext;
 import modelo.dto.UsuarioDTO;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import servicios.ConexionDB;
 
 public class UsuarioDAO {
-    private final Connection conexion;
+
+    //private final Connection conexion;
+    Connection conexion;
+    ConexionDB cdb = new ConexionDB();
+    PreparedStatement ps;
+    ResultSet rs;
 
     public UsuarioDAO() {
-        this.conexion = ConexionDB.obtenerConexion();
+        //this.conexion = ConexionDB.obtenerConexion();
+        conexion = new ConexionDB().obtenerConexion();
     }
 
     public UsuarioDTO validarUsuario(String correo, String contrasena) {
@@ -73,8 +91,69 @@ public class UsuarioDAO {
             return false;
         }
     }
+
+    public UsuarioDAO(Connection conexion) {
+        this.conexion = conexion;
+    }
+
+    //----------
+    public List lista() {
+        List<UsuarioDTO> usuarios = new ArrayList<>();
+        String cadSQL = "SELECT id, nombres, apellidos, correo FROM usuarios";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            //conexion = cdb.obtenerConexion();
+            ps = conexion.prepareStatement(cadSQL);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                UsuarioDTO u = new UsuarioDTO();
+                u.setId(rs.getInt("id"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCorreo(rs.getString("correo"));
+                usuarios.add(u);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener usuarios: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null && !rs.isClosed()) {
+                    rs.close();
+                }
+                if (ps != null && !ps.isClosed()) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return usuarios;
+    }
+
+    public JasperPrint exportarPDF(ServletContext context) throws JRException {
+        // Obtener lista de usuarios 
+        List<UsuarioDTO> usuarios = lista();
+        // Ruta del archivo JRXML
+        String jrxmlFilePath = context.getRealPath("/reporte/ReporteCelulares.jrxml");
+
+        // Compilar el archivo JRXML a Jasper
+        JasperReport jasperReportFuente = JasperCompileManager.compileReport(jrxmlFilePath);
+
+        // Crear un datasource para llenar el reporte
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(usuarios);
+
+        // Llenar el reporte con los datos
+        JasperPrint jasperPrint = 
+                JasperFillManager.fillReport(jasperReportFuente,
+                    new HashMap<>(),
+                    dataSource);
+
+        return jasperPrint;
+    }
+
 }
-
-
-
-

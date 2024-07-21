@@ -20,6 +20,10 @@
         <servlet-name>SVADMIcelular</servlet-name>
         <servlet-class>controladores.SVADMIcelular</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVReporteUsuarios</servlet-name>
+        <servlet-class>controladores.SVReporteUsuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVCelulares</servlet-name>
         <url-pattern>/SVCelulares</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>SVADMIcelular</servlet-name>
         <url-pattern>/SVADMIcelular</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVReporteUsuarios</servlet-name>
+        <url-pattern>/SVReporteUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

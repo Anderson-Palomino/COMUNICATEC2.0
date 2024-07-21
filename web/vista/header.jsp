@@ -20,6 +20,7 @@
                 <ul class="menu">
                     <li><a href="${pageContext.request.contextPath}/index.jsp">Inicio</a></li>
                     <li><a href="${pageContext.request.contextPath}/SVADMIcelular">CELadmi</a></li>
+                    <li><a href="${pageContext.request.contextPath}/SVReporteUsuarios">USUAadmi</a></li>
                     <li>
                         <a href="#" id="submenubtn">Celulares <i class="fas fa-chevron-down"></i></a>
                         <!-- Agrega la clase 'fas' para indicar que es un ícono de FontAwesome -->
