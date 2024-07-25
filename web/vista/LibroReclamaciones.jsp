@@ -164,7 +164,43 @@
                 </div>
             </form>
         </div>
-        <jsp:include page="footer.jsp" />
-    </body>
-</html>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+                                function mostrarVistaPrevia(input) {
+                                    if (input.files && input.files[0]) {
+                                        const reader = new FileReader();
+                                        reader.onload = function (e) {
+                                            document.getElementById('vista_previa').src = e.target.result;
+                                        }
+                                        reader.readAsDataURL(input.files[0]);
+                                    }
+                                }
 
+                                $(document).ready(function () {
+                                    $('#reclamacionForm').on('submit', function (e) {
+                                        e.preventDefault(); // Prevent form submission
+
+                                        // Create a FormData object and append all form inputs
+                                        const formData = new FormData(this);
+
+                                        $.ajax({
+                                            url: $(this).attr('action'), // Form action URL
+                                            type: $(this).attr('method'), // Form method
+                                            data: formData,
+                                            processData: false,
+                                            contentType: false,
+                                            success: function (response) {
+                                                alert('Reclamación enviada exitosamente.');
+                                                console.log(response); // Debug server response
+                                            },
+                                            error: function (xhr, status, error) {
+                                                alert('Hubo un error al enviar la reclamación: ' + error);
+                                                console.log(xhr, status, error); // Debug AJAX error
+                                            }
+                                        });
+                                    });
+                                   });
+        </script>
+        <jsp:include page="footer.jsp" />
+    </body>
+</html>

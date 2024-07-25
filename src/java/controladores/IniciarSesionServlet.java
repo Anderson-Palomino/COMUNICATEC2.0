@@ -27,7 +27,7 @@ public class IniciarSesionServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/vista/index.jsp");
         } else {
             request.setAttribute("error", "Correo o contraseña incorrectos");
-            request.getRequestDispatcher("/vista/Ingresar.jsp").forward(request, response);
+            request.getRequestDispatcher("/vista/IniciarSesion.jsp").forward(request, response);
         }
     }
 
@@ -45,7 +45,8 @@ public class IniciarSesionServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet para iniciar sesión";
     }
 }
+
 

@@ -11,16 +11,17 @@
 %>
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Carrito de compras</title>
         <link href="<%=request.getContextPath()%>/css/headerCSS.css" rel="stylesheet" type="text/css"/>
         <link href="<%=request.getContextPath()%>/css/footerCSS.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="icon" href="<%=request.getContextPath()%>/img/MgamatrixL.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="<%=request.getContextPath()%>/css/producto.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="../img/MgamatrixL.png" />
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -59,9 +60,9 @@
     </head>
     <body>
         <header class="containerHeader">
-           <a href="${pageContext.request.contextPath}/index.jsp" class="logoMenu">
-            <img src="${pageContext.request.contextPath}/img/logo.png" alt="Logo"/>
-        </a>
+            <a href="index.jsp" class="logoMenu">
+                <img src="<%=request.getContextPath()%>/img/Mgamatrix.png" alt="Logo"/>
+            </a>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
                 <i class="fa fa-bars"></i>
@@ -69,13 +70,35 @@
             <nav class="navegador">
                 <ul class="menu">
                     <li><a href="<%=request.getContextPath()%>/vista/index.jsp">Inicio</a></li>
-                    <li>
-                    <a href="#" id="submenubtn">Celulares <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="${pageContext.request.contextPath}/SVIos">IOS</a></li>
-                        <li><a href="${pageContext.request.contextPath}/SVAndroid">Android</a></li>
-                    </ul>
-                </li>
+                    <li class="submenuParent">
+                        <a href="#">Ofrecemos <i class="fa fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li class="submenuParent">
+                                <a href="#">Componentes <i class="fa fa-chevron-right"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Almacenamiento">Almacenamiento</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Monitores">Monitores</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Teclado">Teclado</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Mouse">Mouse</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Auriculares">Auriculares</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/vista/ComponenteCases.jsp">Cases</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Placamadre">Placas Madre</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Memoriaram">Memoria RAM</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Procesador">Procesador</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/vista/ComponenteTarjetasDeVideo.jsp">Tarjetas de video</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/SVProductos?tipo=Cooler">Cooler</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenuParent">
+                                <a href="#">Servicios <i class="fa fa-chevron-right"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="<%=request.getContextPath()%>/vista/VentanaServicioEnsamblaje.jsp">Ensamblaje</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/vista/VentanaServicio=Mantenimiento.jsp">Mantenimiento</a></li>
+                                    <li><a href="<%=request.getContextPath()%>/vista/VentanaServicioInstalacionSO.jsp">Instalación de sistema operativo y drivers</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="<%=request.getContextPath()%>/vista/Contactanos.jsp">Contactanos</a></li>
                     <li><a href="<%=request.getContextPath()%>/vista/Nosotros.jsp">Nosotros</a></li>
 
@@ -111,7 +134,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tbody>
                             <c:forEach var="car" items="${carrito}">
                                 <tr>
                                     <td>${car.getItem()}</td>
@@ -131,10 +153,7 @@
                                 </tr>
                             </c:forEach>
                         </tbody>
-
-                        </tbody>
                     </table>
-
                 </div>
                 <div class="col-sm-4">
                     <div class="card">
@@ -146,19 +165,31 @@
                             <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">
                             <label>Descuento:</label>
                             <input type="text" value="$.0.00" readonly="" class="form-control">
-                            <label>Total Pagar:</label>
+                            <label>Total a Pagar:</label>
                             <input type="text" value="$.${totalPagar}0" readonly="" class="form-control">
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-info btn-block">Realiza Pago</a>
                             <a href="#" class="btn btn-danger btn-block">Generar Compra</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="js/funciones.js" type="text/javascript"></script>
+        <footer class="containerFooter">
+            <div class="box">
+                <div class="redes">
+                    <a href="https://www.facebook.com/">
+                        <img src="<%=request.getContextPath()%>/img/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <img src="<%=request.getContextPath()%>/img/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://twitter.com/">
+                        <img src="<%=request.getContextPath()%>/img/twitter.png" alt="Twitter">
+                    </a>
+                </div>
+                <p class="texto">Mgamatrix &#169; 2023</p>
+            </div>
+        </footer>
     </body>
-    <jsp:include page="footer.jsp" />
 </html>

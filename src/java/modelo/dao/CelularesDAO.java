@@ -17,20 +17,36 @@ public class CelularesDAO {
     ResultSet rs;
 
     public CelularesDAO() {
-        conexion = new ConexionDB().obtenerConexion();
+        conexion = cdb.obtenerConexion();
     }
-
-    
+    public CelularesDTO listarId(int id){
+        String sql="select * from producto where id="+id;
+        CelularesDTO p = new CelularesDTO();
+        try {
+            conexion=cdb.obtenerConexion();
+            ps=conexion.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                p.setId(rs.getInt(1));
+                p.setNombre(rs.getString(2));
+                p.setTipo(rs.getString(3));
+                p.setPrecio(rs.getDouble(4));
+                p.setImagen(rs.getString(5));
+            }
+        } catch (Exception e) {
+        }
+        return p;
+    }
+    // Obtener celular por id
     public CelularesDTO get(int idp) {
         CelularesDTO c = null;
-        String cadSQL = "SELECT id, nombre, tipo, precio, imagen FROM celulares WHERE id=? ";
+        String cadSQL = "SELECT id, nombre, tipo, precio, imagen FROM celulares WHERE id=?";
 
         try {
-            //conexion = cdb.obtenerConexion();
             ps = conexion.prepareStatement(cadSQL);
             ps.setInt(1, idp);
             rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 c = new CelularesDTO();
                 c.setId(rs.getInt("id"));
@@ -39,42 +55,55 @@ public class CelularesDAO {
                 c.setPrecio(rs.getDouble("precio"));
                 c.setImagen(rs.getString("imagen"));
             }
-            rs.close();
         } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return c;
     }
-    
-    //listar los ios
-    public List listar() {
+
+    // Listar los ios
+    public List<CelularesDTO> listar() {
         List<CelularesDTO> ios = new ArrayList<>();
         String SQL = "SELECT * FROM celulares WHERE tipo='ios'";
 
         try {
-            conexion = cdb.obtenerConexion();
             ps = conexion.prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {
                 CelularesDTO ai = new CelularesDTO();
-                ai.setId(rs.getInt(1));
-                ai.setNombre(rs.getString(2));
-                ai.setTipo(rs.getString(3));
-                ai.setPrecio(rs.getDouble(4));
-                ai.setImagen(rs.getString(5));
+                ai.setId(rs.getInt("id"));
+                ai.setNombre(rs.getString("nombre"));
+                ai.setTipo(rs.getString("tipo"));
+                ai.setPrecio(rs.getDouble("precio"));
+                ai.setImagen(rs.getString("imagen"));
                 ios.add(ai);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return ios;
     }
 
-    //listar los android
-    public List list() {
+    // Listar los android
+    public List<CelularesDTO> list() {
         List<CelularesDTO> android = new ArrayList<>();
         String SQL = "SELECT * FROM celulares WHERE tipo='android'";
 
         try {
-            conexion = cdb.obtenerConexion();
             ps = conexion.prepareStatement(SQL);
             rs = ps.executeQuery();
 
@@ -87,17 +116,25 @@ public class CelularesDAO {
                 an.setImagen(rs.getString(5));
                 android.add(an);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return android;
     }
 
-    public List cel() {
+    // Listar todos los productos
+    public List<CelularesDTO> cel() {
         List<CelularesDTO> producto = new ArrayList<>();
         String cadSQL = "SELECT id, nombre, tipo, precio, imagen FROM celulares";
 
         try {
-            conexion = cdb.obtenerConexion();
             ps = conexion.prepareStatement(cadSQL);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -109,33 +146,44 @@ public class CelularesDAO {
                 c.setImagen(rs.getString("imagen"));
                 producto.add(c);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return producto;
     }
 
-    //Metodo para eliminar paquetes
+    // Método para eliminar productos
     public String delete(int idp) {
         String resp = "";
-        //PreparedStatement ps;
-        //ResultSet rs;
-        String cadSQL = "DELETE FROM celulares where id=?";
+        String cadSQL = "DELETE FROM celulares WHERE id=?";
+
         try {
-            //conexion = cdb.obtenerConexion();
             ps = conexion.prepareStatement(cadSQL);
             ps.setInt(1, idp);
             int ctos = ps.executeUpdate();
             if (ctos == 0) {
                 resp = "No se ha eliminado";
             }
-            ps.close();
         } catch (SQLException ex) {
             resp = ex.getMessage();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return resp;
     }
-    
-    //Metodo para agregar nuevos paquetes
+
+    // Método para agregar o actualizar productos
     public String insertUpdate(CelularesDTO c) {
         String resp = "";
         String cadSQL = "";
@@ -144,10 +192,7 @@ public class CelularesDAO {
             if (c.getId() == 0) {
                 // Es una inserción
                 cadSQL = "INSERT INTO celulares (nombre, tipo, precio, imagen) VALUES(?,?,?,?)";
-                //conexion = cdb.obtenerConexion();
                 ps = conexion.prepareStatement(cadSQL);
-                //rs = ps.executeQuery();
-
                 ps.setString(1, c.getNombre());
                 ps.setString(2, c.getTipo());
                 ps.setDouble(3, c.getPrecio());
@@ -156,7 +201,6 @@ public class CelularesDAO {
                 // Es una actualización
                 cadSQL = "UPDATE celulares SET nombre=?, tipo=?, precio=?, imagen=? WHERE id=?";
                 ps = conexion.prepareStatement(cadSQL);
-
                 ps.setString(1, c.getNombre());
                 ps.setString(2, c.getTipo());
                 ps.setDouble(3, c.getPrecio());
@@ -173,8 +217,13 @@ public class CelularesDAO {
             }
         } catch (SQLException ex) {
             resp = "Error en la inserción o actualización: " + ex.getMessage();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
         return resp;
     }
 }

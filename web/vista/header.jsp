@@ -48,7 +48,7 @@
                     </c:otherwise>
                 </c:choose>
                 <li class="carrito">
-                    <a href="${pageContext.request.contextPath}/SVProductos?accion=Carrito">
+                    <a href="${pageContext.request.contextPath}/SVIos?accion=Carrito">
                         <i class="fa fa-shopping-cart"></i> Carrito(<%= contador %>)
                     </a>
                 </li>
