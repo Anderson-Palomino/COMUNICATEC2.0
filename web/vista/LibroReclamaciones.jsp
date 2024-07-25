@@ -17,10 +17,10 @@
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         document.getElementById('vista_previa').setAttribute('src', e.target.result);
-                    
-                    reader.readAsDataURL(input.files[0]);
-                
-            }
+
+                        reader.readAsDataURL(input.files[0]);
+
+                    }
         </script>
     </head>
     <body>
